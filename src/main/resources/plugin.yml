@@ -1,0 +1,8 @@
+name: LanguageSystem
+version: ${project.version}
+main: de.glowman554.lang.LanguageSystemMain
+api-version: 1.19
+author: Glowman554
+commands:
+  language:
+    description: Change your language settings
