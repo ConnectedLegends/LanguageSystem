@@ -20,9 +20,8 @@ public class Translations
 {
 	private HashMap<String, HashMap<String, String>> loadedTranslations = new HashMap<>();
 
-	private String base = "https://cloud.glowman554.de/pdf/res/trans";
 
-	public Translations() throws JsonSyntaxException, IOException
+	public Translations(String base) throws JsonSyntaxException, IOException
 	{
 		LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading translations...");
 

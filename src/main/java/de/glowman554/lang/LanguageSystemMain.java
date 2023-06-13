@@ -10,6 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.glowman554.lang.commands.LanguageCommands;
 import de.glowman554.lang.listeners.PlayerLoginListener;
 
+// TODO: randomness to translations, make load url configurable
+
 public class LanguageSystemMain extends JavaPlugin
 {
 	private static LanguageSystemMain instance;
@@ -35,6 +37,7 @@ public class LanguageSystemMain extends JavaPlugin
 		config.addDefault("database.database", "changeme");
 		config.addDefault("database.username", "changeme");
 		config.addDefault("database.password", "changeme");
+		config.addDefault("base_url", "https://raw.githubusercontent.com/ConnectedLegends/languages/main");
 		config.options().copyDefaults(true);
 		saveConfig();
 
@@ -50,7 +53,7 @@ public class LanguageSystemMain extends JavaPlugin
 
 		try
 		{
-			translations = new Translations();
+			translations = new Translations(config.getString("base_url"));
 		}
 		catch (IOException e)
 		{
