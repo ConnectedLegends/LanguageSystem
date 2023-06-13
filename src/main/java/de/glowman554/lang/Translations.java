@@ -18,30 +18,17 @@ import net.shadew.json.JsonSyntaxException;
 
 public class Translations
 {
-	private HashMap<String, HashMap<String, String>> loadedTranslations = new HashMap<>();
+	private HashMap<String, HashMap<String, String>> loadedTranslations;
 
+	private String base;
 
 	public Translations(String base) throws JsonSyntaxException, IOException
 	{
-		LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading translations...");
-
-		for (JsonNode trans : Json.json().parse(HttpUtils.get(base + "/translations.json")))
-		{
-			LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading " + trans.asString());
-
-			HashMap<String, String> translaltion_map = new HashMap<>();
-
-			JsonNode translations = Json.json().parse(HttpUtils.get(base + "/" + trans.asString() + ".json"));
-			for (String message : translations.keySet())
-			{
-				translaltion_map.put(message, translations.get(message).asString());
-			}
-
-			loadedTranslations.put(trans.asString(), translaltion_map);
-		}
+		this.base = base;
+		reload();
 	}
 
-	private String loadMessage(String language, String message)
+	public String loadMessage(String language, String message)
 	{
 		if (!loadedTranslations.containsKey(language))
 		{
@@ -56,7 +43,7 @@ public class Translations
 		return loadedTranslations.get(language).get(message);
 	}
 
-	private String loadMessage(Player player, String message)
+	public String loadMessage(Player player, String message)
 	{
 		try
 		{
@@ -83,5 +70,34 @@ public class Translations
 	public List<String> getLanguages()
 	{
 		return Arrays.asList(loadedTranslations.keySet().toArray(String[]::new));
+	}
+
+	public void reload()
+	{
+		loadedTranslations = new HashMap<>();
+
+		LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading translations...");
+
+		try
+		{
+			for (JsonNode trans : Json.json().parse(HttpUtils.get(base + "/translations.json")))
+			{
+				LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading " + trans.asString());
+
+				HashMap<String, String> translaltion_map = new HashMap<>();
+
+				JsonNode translations = Json.json().parse(HttpUtils.get(base + "/" + trans.asString() + ".json"));
+				for (String message : translations.keySet())
+				{
+					translaltion_map.put(message, translations.get(message).asString());
+				}
+
+				loadedTranslations.put(trans.asString(), translaltion_map);
+			}
+		}
+		catch (IOException e)
+		{
+			throw new IllegalStateException(e);
+		}
 	}
 }

@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.glowman554.lang.commands.LanguageCommands;
+import de.glowman554.lang.commands.ReloadCommand;
 import de.glowman554.lang.listeners.PlayerLoginListener;
 
 // TODO: randomness to translations, make load url configurable
@@ -70,6 +71,8 @@ public class LanguageSystemMain extends JavaPlugin
 		LanguageCommands language = new LanguageCommands();
 		getCommand("language").setExecutor(language);
 		getCommand("language").setTabCompleter(language);
+		
+		getCommand("reload").setExecutor(new ReloadCommand());
 	}
 
 	@Override

@@ -21,4 +21,21 @@ public class LanguageSystem
 			LanguageSystemMain.getInstance().getTranslations().sendMessage(sender, message, placeholders);
 		}
 	}
+
+	public static String getString(Player player, String message)
+	{
+		return LanguageSystemMain.getInstance().getTranslations().loadMessage(player, message);
+	}
+
+	public static String getString(CommandSender sender, String message)
+	{
+		if (sender instanceof Player)
+		{
+			return LanguageSystemMain.getInstance().getTranslations().loadMessage((Player) sender, message);
+		}
+		else
+		{
+			return LanguageSystemMain.getInstance().getTranslations().loadMessage("de", message);
+		}
+	}
 }

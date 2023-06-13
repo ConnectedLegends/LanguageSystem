@@ -6,3 +6,6 @@ author: Glowman554
 commands:
   language:
     description: Change your language settings
+  reload:
+    description: Reload languages
+    permission: language.reload
