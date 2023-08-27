@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 import org.bukkit.command.CommandSender;
@@ -46,11 +47,11 @@ public class Translations
 		return loadedTranslations.get(language).get(message);
 	}
 
-	public String loadMessage(Player player, String message)
+	public String loadMessage(UUID uuid, String message)
 	{
 		try
 		{
-			String language = LanguageSystemMain.getInstance().getDatabase().getLanguage(player.getUniqueId());
+			String language = LanguageSystemMain.getInstance().getDatabase().getLanguage(uuid);
 
 			return loadMessage(language, message);
 		}
@@ -62,7 +63,7 @@ public class Translations
 
 	public void sendMessage(Player player, String message, Object... placeholders)
 	{
-		player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(loadMessage(player, message), placeholders)));
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(loadMessage(player.getUniqueId(), message), placeholders)));
 	}
 
 	public void sendMessage(CommandSender sender, String message, Object... placeholders)
