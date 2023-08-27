@@ -58,8 +58,8 @@
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
 		<repository>
-			<id>Shadew Maven</id>
-			<url>https://maven.shadew.net/</url>
+			<id>ConnectedLegends Maven</id>
+			<url>https://repository.connectedlegends.com/</url>
 		</repository>
 	</repositories>
 

@@ -1,5 +1,7 @@
 package de.glowman554.lang;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.logging.Level;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import de.glowman554.lang.utils.FileUtils;
 import de.glowman554.lang.utils.HttpUtils;
 import net.md_5.bungee.api.ChatColor;
 import net.shadew.json.Json;
@@ -72,6 +75,18 @@ public class Translations
 		return Arrays.asList(loadedTranslations.keySet().toArray(String[]::new));
 	}
 
+    public String loadFromFileOrDownload(String path) throws IOException
+    {
+        if (path.startsWith("http"))
+        {
+            return HttpUtils.get(path);
+        }
+        else
+        {
+            return FileUtils.readFile(new FileInputStream(path));
+        }
+    }
+
 	public void reload()
 	{
 		loadedTranslations = new HashMap<>();
@@ -80,13 +95,13 @@ public class Translations
 
 		try
 		{
-			for (JsonNode trans : Json.json().parse(HttpUtils.get(base + "/translations.json")))
+			for (JsonNode trans : Json.json().parse(loadFromFileOrDownload(base + "/translations.json")))
 			{
 				LanguageSystemMain.getInstance().getLogger().log(Level.INFO, "Loading " + trans.asString());
 
 				HashMap<String, String> translaltion_map = new HashMap<>();
 
-				JsonNode translations = Json.json().parse(HttpUtils.get(base + "/" + trans.asString() + ".json"));
+				JsonNode translations = Json.json().parse(loadFromFileOrDownload(base + "/" + trans.asString() + ".json"));
 				for (String message : translations.keySet())
 				{
 					translaltion_map.put(message, translations.get(message).asString());
