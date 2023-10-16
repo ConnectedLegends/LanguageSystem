@@ -1,5 +1,5 @@
 name: LanguageSystem
 version: ${project.version}
-main: de.glowman554.lang.LanguageSystemMain
+main: de.glowman554.bungeelang.LanguageSystemMain
 api-version: 1.19
 author: Glowman554

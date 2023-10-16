@@ -1,11 +1,11 @@
-package de.glowman554.lang;
+package de.glowman554.bungeelang;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
-import de.glowman554.lang.listeners.PlayerLoginListener;
+import de.glowman554.bungeelang.listeners.PlayerLoginListener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;

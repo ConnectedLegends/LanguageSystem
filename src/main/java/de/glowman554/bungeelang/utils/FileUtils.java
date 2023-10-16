@@ -1,4 +1,4 @@
-package de.glowman554.lang.utils;
+package de.glowman554.bungeelang.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package de.glowman554.lang;
+package de.glowman554.bungeelang;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import org.yaml.snakeyaml.util.UriEncoder;
 
-import de.glowman554.lang.utils.FileUtils;
+import de.glowman554.bungeelang.utils.FileUtils;
 
 public class DatabaseConnection
 {

@@ -1,4 +1,4 @@
-package de.glowman554.lang;
+package de.glowman554.bungeelang;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
-import de.glowman554.lang.utils.FileUtils;
-import de.glowman554.lang.utils.HttpUtils;
+import de.glowman554.bungeelang.utils.FileUtils;
+import de.glowman554.bungeelang.utils.HttpUtils;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

@@ -1,4 +1,4 @@
-package de.glowman554.lang;
+package de.glowman554.bungeelang;
 
 import java.util.UUID;
 
