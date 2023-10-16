@@ -1,6 +1,5 @@
 package de.glowman554.lang;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,12 +9,11 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import de.glowman554.lang.utils.FileUtils;
 import de.glowman554.lang.utils.HttpUtils;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.shadew.json.Json;
 import net.shadew.json.JsonNode;
 import net.shadew.json.JsonSyntaxException;
@@ -61,7 +59,7 @@ public class Translations
 		}
 	}
 
-	public void sendMessage(Player player, String message, Object... placeholders)
+	public void sendMessage(ProxiedPlayer player, String message, Object... placeholders)
 	{
 		player.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format(loadMessage(player.getUniqueId(), message), placeholders)));
 	}
@@ -76,17 +74,17 @@ public class Translations
 		return Arrays.asList(loadedTranslations.keySet().toArray(String[]::new));
 	}
 
-    public String loadFromFileOrDownload(String path) throws IOException
-    {
-        if (path.startsWith("http"))
-        {
-            return HttpUtils.get(path);
-        }
-        else
-        {
-            return FileUtils.readFile(new FileInputStream(path));
-        }
-    }
+	public String loadFromFileOrDownload(String path) throws IOException
+	{
+		if (path.startsWith("http"))
+		{
+			return HttpUtils.get(path);
+		}
+		else
+		{
+			return FileUtils.readFile(new FileInputStream(path));
+		}
+	}
 
 	public void reload()
 	{

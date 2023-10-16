@@ -1,19 +1,19 @@
 package de.glowman554.lang;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import de.glowman554.lang.commands.LanguageCommands;
-import de.glowman554.lang.commands.ReloadCommand;
 import de.glowman554.lang.listeners.PlayerLoginListener;
+import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
 
 // TODO: randomness to translations, make load url configurable
 
-public class LanguageSystemMain extends JavaPlugin
+public class LanguageSystemMain extends Plugin
 {
 	private static LanguageSystemMain instance;
 
@@ -27,20 +27,30 @@ public class LanguageSystemMain extends JavaPlugin
 		return instance;
 	}
 
-	private FileConfiguration config = getConfig();
+	private Configuration config;
 	private DatabaseConnection database;
 	private Translations translations;
 
 	@Override
 	public void onLoad()
 	{
-		config.addDefault("database.url", "changeme");
-		config.addDefault("database.database", "changeme");
-		config.addDefault("database.username", "changeme");
-		config.addDefault("database.password", "changeme");
-		config.addDefault("base_url", "https://raw.githubusercontent.com/ConnectedLegends/languages/main");
-		config.options().copyDefaults(true);
-		saveConfig();
+		try
+		{
+			config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(), "config.yml"));
+		}
+		catch (IOException e)
+		{
+			throw new IllegalStateException(e);
+		}
+		/*
+		 * config.addDefault("database.url", "changeme");
+		 * config.addDefault("database.database", "changeme");
+		 * config.addDefault("database.username", "changeme");
+		 * config.addDefault("database.password", "changeme");
+		 * config.addDefault("base_url",
+		 * "https://raw.githubusercontent.com/ConnectedLegends/languages/main");
+		 * config.options().copyDefaults(true); saveConfig();
+		 */
 
 		try
 		{
@@ -66,13 +76,7 @@ public class LanguageSystemMain extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
-		getServer().getPluginManager().registerEvents(new PlayerLoginListener(), this);
-	
-		LanguageCommands language = new LanguageCommands();
-		getCommand("language").setExecutor(language);
-		getCommand("language").setTabCompleter(language);
-		
-		getCommand("reload").setExecutor(new ReloadCommand());
+		getProxy().getPluginManager().registerListener(this, new PlayerLoginListener());
 	}
 
 	@Override

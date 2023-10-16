@@ -83,7 +83,7 @@ public class DatabaseConnection
 		st.execute();
 		st.close();
 	}
-	
+
 	public void updatePlayer(UUID uuid, String lang) throws SQLException
 	{
 		PreparedStatement st = connect.prepareStatement("update players set language = ? where uuid = ?");

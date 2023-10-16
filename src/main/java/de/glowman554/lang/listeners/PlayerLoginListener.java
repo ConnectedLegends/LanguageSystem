@@ -2,16 +2,15 @@ package de.glowman554.lang.listeners;
 
 import java.sql.SQLException;
 
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerLoginEvent;
-
 import de.glowman554.lang.LanguageSystemMain;
+import net.md_5.bungee.api.event.PostLoginEvent;
+import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.event.EventHandler;
 
 public class PlayerLoginListener implements Listener
 {
 	@EventHandler
-	public void onPlayerLogin(PlayerLoginEvent event)
+	public void onPlayerLogin(PostLoginEvent event)
 	{
 		try
 		{
