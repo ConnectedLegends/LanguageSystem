@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.glowman554</groupId>
-	<artifactId>LanguageSystem</artifactId>
-	<version>1.0.1-bungee</version>
+	<artifactId>LanguageSystemBungee</artifactId>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>LanguageSystem</name>
