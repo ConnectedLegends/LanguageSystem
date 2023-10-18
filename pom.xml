@@ -6,7 +6,7 @@
 
 	<groupId>de.glowman554</groupId>
 	<artifactId>LanguageSystem</artifactId>
-	<version>1.0.0-bungee</version>
+	<version>1.0.1-bungee</version>
 	<packaging>jar</packaging>
 
 	<name>LanguageSystem</name>

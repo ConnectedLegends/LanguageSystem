@@ -1,0 +1,6 @@
+database:
+  url: changeme
+  database: changeme
+  username: changeme
+  password: changeme
+base_url: https://raw.githubusercontent.com/ConnectedLegends/languages/main

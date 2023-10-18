@@ -1,7 +1,9 @@
 package de.glowman554.bungeelang;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
@@ -36,21 +38,13 @@ public class LanguageSystemMain extends Plugin
 	{
 		try
 		{
+			makeConfig();
 			config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(), "config.yml"));
 		}
 		catch (IOException e)
 		{
 			throw new IllegalStateException(e);
 		}
-		/*
-		 * config.addDefault("database.url", "changeme");
-		 * config.addDefault("database.database", "changeme");
-		 * config.addDefault("database.username", "changeme");
-		 * config.addDefault("database.password", "changeme");
-		 * config.addDefault("base_url",
-		 * "https://raw.githubusercontent.com/ConnectedLegends/languages/main");
-		 * config.options().copyDefaults(true); saveConfig();
-		 */
 
 		try
 		{
@@ -94,5 +88,25 @@ public class LanguageSystemMain extends Plugin
 	public Translations getTranslations()
 	{
 		return translations;
+	}
+
+	public void makeConfig() throws IOException
+	{
+		if (!getDataFolder().exists())
+		{
+			getLogger().info("Created config folder: " + getDataFolder().mkdir());
+		}
+
+		File configFile = new File(getDataFolder(), "config.yml");
+
+		if (!configFile.exists())
+		{
+			FileOutputStream outputStream = new FileOutputStream(configFile);
+			InputStream inputStream = getResourceAsStream("config.yml");
+			inputStream.transferTo(outputStream);
+
+			outputStream.close();
+			inputStream.close();
+		}
 	}
 }
