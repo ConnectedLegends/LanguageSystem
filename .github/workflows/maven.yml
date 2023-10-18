@@ -10,9 +10,9 @@ name: Automatic build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "bungee" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "bungee" ]
   workflow_dispatch:
 
 jobs:
