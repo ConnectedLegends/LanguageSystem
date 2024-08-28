@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.glowman554</groupId>
+	<groupId>net.connectedlegends</groupId>
 	<artifactId>LanguageSystem</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
@@ -58,8 +58,8 @@
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
 		<repository>
-			<id>ConnectedLegends Maven</id>
-			<url>https://repository.connectedlegends.com/</url>
+			<id>ConnectedLegends Maven-releases</id>
+			<url>https://repository.connectedlegends.com/releases</url>
 		</repository>
 	</repositories>
 
@@ -86,5 +86,12 @@
 			<version>0.4</version>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>ConnectedLegends Maven</id>
+			<name>Reposilite Repository</name>
+			<url>https://repository.connectedlegends.com/releases</url>
+		</repository>
+	</distributionManagement>
 
 </project>
