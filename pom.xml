@@ -58,8 +58,9 @@
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</repository>
 		<repository>
-			<id>ConnectedLegends Maven</id>
-			<url>https://repository.connectedlegends.com/</url>
+			<id>ConnectedLegends Maven-releases</id>
+			<name>ConnectedLegends Repository</name>
+			<url>https://repository.connectedlegends.com/releases</url>
 		</repository>
 	</repositories>
 
@@ -86,5 +87,12 @@
 			<version>0.4</version>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>ConnectedLegends Maven-releases</id>
+			<name>ConnectedLegends Repository</name>
+			<url>https://repository.connectedlegends.com/releases</url>
+		</repository>
+	</distributionManagement>
 
 </project>
