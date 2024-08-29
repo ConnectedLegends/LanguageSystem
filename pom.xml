@@ -59,6 +59,7 @@
 		</repository>
 		<repository>
 			<id>ConnectedLegends Maven-releases</id>
+			<name>ConnectedLegends Repository</name>
 			<url>https://repository.connectedlegends.com/releases</url>
 		</repository>
 	</repositories>
@@ -88,8 +89,8 @@
 	</dependencies>
 	<distributionManagement>
 		<repository>
-			<id>ConnectedLegends Maven</id>
-			<name>Reposilite Repository</name>
+			<id>ConnectedLegends Maven-releases</id>
+			<name>ConnectedLegends Repository</name>
 			<url>https://repository.connectedlegends.com/releases</url>
 		</repository>
 	</distributionManagement>
