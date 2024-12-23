@@ -6,7 +6,7 @@
 
 	<groupId>de.glowman554</groupId>
 	<artifactId>LanguageSystem</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>LanguageSystem</name>
@@ -73,18 +73,18 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.19.4-R0.1-SNAPSHOT</version>
+			<version>1.21-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.30</version>
+			<version>8.0.33</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
-			<version>4.10.0</version>
+			<version>4.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.shadew</groupId>
